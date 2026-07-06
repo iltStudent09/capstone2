@@ -3,9 +3,15 @@ import type { Customer } from '../types/customer'
 
 type CustomerListProps = {
   customers: Customer[]
+  deletingCustomerId?: number | null
+  onDeleteCustomer: (customer: Customer) => void
 }
 
-function CustomerList({ customers }: CustomerListProps) {
+function CustomerList({
+  customers,
+  deletingCustomerId = null,
+  onDeleteCustomer,
+}: CustomerListProps) {
   return (
     <table className="customer-table">
       <thead>
@@ -27,7 +33,17 @@ function CustomerList({ customers }: CustomerListProps) {
             <td>{customer.city}</td>
             <td>{customer.state}</td>
             <td>
-              <Link to={`/edit/${customer.id}`}>Edit</Link>
+              <div className="table-actions">
+                <Link to={`/edit/${customer.id}`}>Edit</Link>
+                <button
+                  type="button"
+                  className="table-delete"
+                  onClick={() => onDeleteCustomer(customer)}
+                  disabled={deletingCustomerId === customer.id}
+                >
+                  {deletingCustomerId === customer.id ? 'Deleting...' : 'Delete'}
+                </button>
+              </div>
             </td>
           </tr>
         ))}

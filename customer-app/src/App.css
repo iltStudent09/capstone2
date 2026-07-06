@@ -35,6 +35,21 @@
   text-align: left;
 }
 
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-delete {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
 .customer-form {
   max-width: 700px;
   display: flex;
