@@ -1,7 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
-import CustomerFormPage from './pages/CustomerFormPage'
+import AddCustomerPage from './pages/AddCustomerPage'
 import CustomerListPage from './pages/CustomerListPage'
+import EditCustomerPage from './pages/EditCustomerPage'
 import './App.css'
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<CustomerListPage />} />
-          <Route path="/add" element={<CustomerFormPage />} />
-          <Route path="/edit/:id" element={<CustomerFormPage />} />
+          <Route path="/add" element={<AddCustomerPage />} />
+          <Route path="/edit/:id" element={<EditCustomerPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
