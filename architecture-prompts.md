@@ -1,13 +1,13 @@
-# Prompt Library (Aligned to architecture.md)
+# Prompt Library (Aligned to ARCHITECTURE.md)
 
-Use these prompts when working with AI so implementation follows [architecture.md](architecture.md).
+Use these prompts when working with AI so implementation follows [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ---
 
 ## 1) Scaffold the architecture
 
 ```text
-Read architecture.md and scaffold the project structure exactly as documented.
+Read ARCHITECTURE.md and scaffold the project structure exactly as documented.
 Requirements:
 - Use CustomerProvider (Context) for customer domain state.
 - Use useReducer for customer domain state.
@@ -20,7 +20,7 @@ Do not add extra features. Keep changes minimal and consistent with existing cod
 ## 2) Build Customer Context + Reducer
 
 ```text
-Implement CustomerContext and reducer according to architecture.md.
+Implement CustomerContext and reducer according to ARCHITECTURE.md.
 Include:
 - State: customers, loading, error.
 - Actions:
@@ -34,7 +34,7 @@ Do not introduce unrelated global state.
 ## 3) Build useApi hook
 
 ```text
-Create a reusable useApi hook aligned with architecture.md.
+Create a reusable useApi hook aligned with ARCHITECTURE.md.
 Requirements:
 - Base URL should support current app API usage.
 - Provide typed helpers for GET/POST/PUT/DELETE.
@@ -46,7 +46,7 @@ Add only what current customer feature needs.
 ## 4) Build useCustomers domain hook
 
 ```text
-Create useCustomers hook using useApi + CustomerContext reducer flow from architecture.md.
+Create useCustomers hook using useApi + CustomerContext reducer flow from ARCHITECTURE.md.
 Requirements:
 - fetchCustomers, createCustomer, updateCustomer.
 - Dispatch START/SUCCESS/ERROR actions for each async flow.
@@ -57,7 +57,7 @@ Requirements:
 ## 5) Create shared CustomerForm + wrappers
 
 ```text
-Refactor forms to match architecture.md:
+Refactor forms to match ARCHITECTURE.md:
 - Create one shared CustomerForm component for fields + validation UI.
 - Add AddCustomerPage wrapper for create behavior.
 - Add EditCustomerPage wrapper for load-by-id + update behavior.
@@ -73,14 +73,14 @@ Keep route behavior:
 - / -> list
 - /add -> add wrapper
 - /edit/:id -> edit wrapper
-Follow architecture.md and avoid adding new routes.
+Follow ARCHITECTURE.md and avoid adding new routes.
 ```
 
 ## 7) Enforce validation consistency
 
 ```text
 Implement shared customer validation used by both add and edit flows.
-Rules must align with validation.html and architecture.md.
+Rules must align with validation.html and ARCHITECTURE.md.
 Requirements:
 - Required fields: name, email, phone, address, city, state, zip.
 - state: 2 uppercase letters.
@@ -92,7 +92,7 @@ Use one shared validation source to avoid validation drift.
 ## 8) Safety check prompt (before merging)
 
 ```text
-Review current implementation against architecture.md.
+Review current implementation against ARCHITECTURE.md.
 Report:
 1) What matches the architecture.
 2) What diverges.
@@ -103,7 +103,7 @@ Do not refactor unrelated areas.
 ## 9) Small-step prompt (single file at a time)
 
 ```text
-Follow architecture.md. Change only one file in this step: <FILE_PATH>.
+Follow ARCHITECTURE.md. Change only one file in this step: <FILE_PATH>.
 Explain what changed and why it supports the architecture decisions.
 Do not modify other files.
 ```
@@ -111,7 +111,7 @@ Do not modify other files.
 ## 10) Commit message helper prompt
 
 ```text
-Generate a concise commit message and bullet summary based on changes made to align with architecture.md.
+Generate a concise commit message and bullet summary based on changes made to align with ARCHITECTURE.md.
 Format:
 - Title (imperative, <=72 chars)
 - 3-5 bullets explaining key architecture-aligned changes
@@ -124,5 +124,5 @@ Format:
 Start prompts with:
 
 ```text
-Use architecture.md as the source of truth for implementation decisions.
+Use ARCHITECTURE.md as the source of truth for implementation decisions.
 ```
