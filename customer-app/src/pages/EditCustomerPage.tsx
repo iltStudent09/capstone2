@@ -102,6 +102,7 @@ function EditCustomerPage() {
           submitLabel="Update Customer"
           isSubmitting={isSaving}
           onSubmit={handleUpdateCustomer}
+          onCancel={() => navigate('/')}
         />
       )}
 

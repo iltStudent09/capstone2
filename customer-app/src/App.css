@@ -67,6 +67,22 @@
   font-size: 14px;
 }
 
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-cancel {
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+
 .customer-form button {
   width: fit-content;
   padding: 10px 14px;

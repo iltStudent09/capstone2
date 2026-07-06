@@ -61,6 +61,7 @@ function AddCustomerPage() {
         submitLabel="Create Customer"
         isSubmitting={isSaving}
         onSubmit={handleCreateCustomer}
+        onCancel={() => navigate('/')}
       />
 
       {errorMessage && <p>{errorMessage}</p>}

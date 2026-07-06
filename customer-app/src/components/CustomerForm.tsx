@@ -5,10 +5,21 @@ import type { CustomerFormData } from '../types/customer'
 type CustomerFormErrors = Partial<Record<keyof CustomerFormData, string>>
 
 type CustomerFormProps = {
-  initialData: CustomerFormData
+  initialData?: CustomerFormData
   submitLabel: string
   isSubmitting: boolean
   onSubmit: (data: CustomerFormData) => Promise<void>
+  onCancel?: () => void
+}
+
+const emptyForm: CustomerFormData = {
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+  city: '',
+  state: '',
+  zip: '',
 }
 
 const fieldOrder: Array<keyof CustomerFormData> = [
@@ -73,8 +84,14 @@ function validateFormData(data: CustomerFormData): CustomerFormErrors {
   return errors
 }
 
-function CustomerForm({ initialData, submitLabel, isSubmitting, onSubmit }: CustomerFormProps) {
-  const [formData, setFormData] = useState<CustomerFormData>(initialData)
+function CustomerForm({
+  initialData,
+  submitLabel,
+  isSubmitting,
+  onSubmit,
+  onCancel,
+}: CustomerFormProps) {
+  const [formData, setFormData] = useState<CustomerFormData>(initialData ?? emptyForm)
   const [fieldErrors, setFieldErrors] = useState<CustomerFormErrors>({})
 
   const hasErrors = useMemo(
@@ -194,9 +211,22 @@ function CustomerForm({ initialData, submitLabel, isSubmitting, onSubmit }: Cust
         </label>
       </div>
 
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Saving...' : submitLabel}
-      </button>
+      <div className="form-actions">
+        {onCancel && (
+          <button
+            type="button"
+            className="form-cancel"
+            onClick={onCancel}
+            disabled={isSubmitting}
+          >
+            Cancel
+          </button>
+        )}
+
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Saving...' : submitLabel}
+        </button>
+      </div>
 
       {hasErrors && <p className="form-note">Please fix the errors above.</p>}
     </form>
