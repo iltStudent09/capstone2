@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import CustomerForm from '../components/CustomerForm'
+import { useCustomerContext } from '../hooks/useCustomerContext'
 import type { Customer, CustomerFormData } from '../types/customer'
 
 const API_BASE_URL = '/api'
@@ -17,6 +18,7 @@ const emptyForm: CustomerFormData = {
 
 function EditCustomerPage() {
   const { id } = useParams<{ id: string }>()
+  const { state, dispatch } = useCustomerContext()
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState<CustomerFormData>(emptyForm)
@@ -27,6 +29,26 @@ function EditCustomerPage() {
   useEffect(() => {
     if (!id) {
       setErrorMessage('Customer id is required')
+      setIsLoading(false)
+      return
+    }
+
+    const existingCustomer = state.customers.find(
+      (customer) => customer.id === Number(id),
+    )
+
+    if (existingCustomer) {
+      const { name, email, phone, address, city, state: customerState, zip } =
+        existingCustomer
+      setFormData({
+        name,
+        email,
+        phone,
+        address,
+        city,
+        state: customerState,
+        zip,
+      })
       setIsLoading(false)
       return
     }
@@ -52,7 +74,7 @@ function EditCustomerPage() {
     }
 
     void fetchCustomer()
-  }, [id])
+  }, [id, state.customers])
 
   const handleUpdateCustomer = async (nextFormData: CustomerFormData) => {
     if (!id) {
@@ -74,6 +96,9 @@ function EditCustomerPage() {
       if (!response.ok) {
         throw new Error('Unable to update customer')
       }
+
+      const updatedCustomer: Customer = await response.json()
+      dispatch({ type: 'UPDATE_CUSTOMER', payload: updatedCustomer })
 
       navigate('/')
     } catch (error) {

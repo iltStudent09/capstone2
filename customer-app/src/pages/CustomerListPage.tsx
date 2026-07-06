@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CustomerList from '../components/CustomerList'
 import type { Customer } from '../types/customer'
+import { useCustomerContext } from '../hooks/useCustomerContext'
 
 const API_BASE_URL = '/api'
 
 function CustomerListPage() {
-  const [customers, setCustomers] = useState<Customer[]>([])
+  const { state, dispatch } = useCustomerContext()
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -20,7 +21,7 @@ function CustomerListPage() {
         }
 
         const data: Customer[] = await response.json()
-        setCustomers(data)
+        dispatch({ type: 'SET_CUSTOMERS', payload: data })
       } catch (error) {
         const message =
           error instanceof Error ? error.message : 'Unable to load customers'
@@ -31,7 +32,7 @@ function CustomerListPage() {
     }
 
     void fetchCustomers()
-  }, [])
+  }, [dispatch])
 
   return (
     <main className="page">
@@ -46,12 +47,12 @@ function CustomerListPage() {
 
       {!isLoading && errorMessage && <p>{errorMessage}</p>}
 
-      {!isLoading && !errorMessage && customers.length === 0 && (
+      {!isLoading && !errorMessage && state.customers.length === 0 && (
         <p>No customers found.</p>
       )}
 
-      {!isLoading && !errorMessage && customers.length > 0 && (
-        <CustomerList customers={customers} />
+      {!isLoading && !errorMessage && state.customers.length > 0 && (
+        <CustomerList customers={state.customers} />
       )}
     </main>
   )

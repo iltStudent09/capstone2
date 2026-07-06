@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CustomerForm from '../components/CustomerForm'
-import type { CustomerFormData } from '../types/customer'
+import { useCustomerContext } from '../hooks/useCustomerContext'
+import type { Customer, CustomerFormData } from '../types/customer'
 
 const API_BASE_URL = '/api'
 
@@ -16,6 +17,7 @@ const emptyForm: CustomerFormData = {
 }
 
 function AddCustomerPage() {
+  const { dispatch } = useCustomerContext()
   const navigate = useNavigate()
   const [isSaving, setIsSaving] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -36,6 +38,9 @@ function AddCustomerPage() {
       if (!response.ok) {
         throw new Error('Unable to create customer')
       }
+
+      const createdCustomer: Customer = await response.json()
+      dispatch({ type: 'ADD_CUSTOMER', payload: createdCustomer })
 
       navigate('/')
     } catch (error) {
