@@ -23,8 +23,17 @@ export function useCustomers() {
   }, [api, dispatch])
 
   const getCustomerById = useCallback(async (id: number) => {
-    return api.get<Customer>(`/customers/${id}`)
-  }, [api])
+    try {
+      const customer = await api.get<Customer>(`/customers/${id}`)
+      dispatch({ type: 'CLEAR_CUSTOMER_ERROR' })
+      return customer
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Unable to load customer'
+      dispatch({ type: 'FETCH_CUSTOMERS_ERROR', payload: message })
+      throw error
+    }
+  }, [api, dispatch])
 
   const createCustomer = useCallback(async (formData: CustomerFormData) => {
     dispatch({ type: 'CREATE_CUSTOMER_START' })
