@@ -1,0 +1,84 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "phone": "555-101-2201",
+      "address": "123 Maple St",
+      "city": "Denver",
+      "state": "CO",
+      "zip": "80203"
+    },
+    {
+      "id": 2,
+      "name": "Brian Lee",
+      "email": "brian.lee@example.com",
+      "phone": "555-102-3344",
+      "address": "456 Oak Ave",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701"
+    },
+    {
+      "id": 3,
+      "name": "Carla Mendes",
+      "email": "carla.mendes@example.com",
+      "phone": "555-103-4455",
+      "address": "789 Pine Rd",
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33101"
+    },
+    {
+      "id": 4,
+      "name": "Derek Patel",
+      "email": "derek.patel@example.com",
+      "phone": "555-104-5566",
+      "address": "321 Cedar Ln",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98101"
+    },
+    {
+      "id": 5,
+      "name": "Emma Wilson",
+      "email": "emma.wilson@example.com",
+      "phone": "555-105-6677",
+      "address": "654 Birch Blvd",
+      "city": "Chicago",
+      "state": "IL",
+      "zip": "60601"
+    },
+    {
+      "id": 7,
+      "name": "Grace Kim",
+      "email": "grace.kim@example.com",
+      "phone": "555-107-8899",
+      "address": "159 Spruce Ct",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02108"
+    },
+    {
+      "id": 8,
+      "name": "Henry Davis",
+      "email": "henry.davis@example.com",
+      "phone": "555-108-9900",
+      "address": "753 Elm St",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": "37201"
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "555-0000",
+      "address": "123 Test St",
+      "city": "Testville",
+      "state": "TX",
+      "zip": "75001",
+      "id": 9
+    }
+  ]
+}
