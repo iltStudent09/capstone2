@@ -1,10 +1,8 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CustomerForm from '../components/CustomerForm'
-import { useCustomerContext } from '../hooks/useCustomerContext'
-import type { Customer, CustomerFormData } from '../types/customer'
-
-const API_BASE_URL = '/api'
+import { useCustomers } from '../hooks/useCustomers'
+import type { CustomerFormData } from '../types/customer'
 
 const emptyForm: CustomerFormData = {
   name: '',
@@ -17,38 +15,20 @@ const emptyForm: CustomerFormData = {
 }
 
 function AddCustomerPage() {
-  const { dispatch } = useCustomerContext()
+  const { createCustomer, isLoading, errorMessage, clearError } = useCustomers()
   const navigate = useNavigate()
-  const [isSaving, setIsSaving] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    clearError()
+  }, [clearError])
 
   const handleCreateCustomer = async (formData: CustomerFormData) => {
-    setIsSaving(true)
-    setErrorMessage('')
-
     try {
-      const response = await fetch(`${API_BASE_URL}/customers`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (!response.ok) {
-        throw new Error('Unable to create customer')
-      }
-
-      const createdCustomer: Customer = await response.json()
-      dispatch({ type: 'ADD_CUSTOMER', payload: createdCustomer })
+      await createCustomer(formData)
 
       navigate('/')
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : 'Unable to create customer'
-      setErrorMessage(message)
-    } finally {
-      setIsSaving(false)
+    } catch {
+      return
     }
   }
 
@@ -64,7 +44,7 @@ function AddCustomerPage() {
       <CustomerForm
         initialData={emptyForm}
         submitLabel="Create Customer"
-        isSubmitting={isSaving}
+        isSubmitting={isLoading}
         onSubmit={handleCreateCustomer}
         onCancel={() => navigate('/')}
       />

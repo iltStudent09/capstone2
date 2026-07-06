@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import CustomerForm from '../components/CustomerForm'
-import { useCustomerContext } from '../hooks/useCustomerContext'
-import type { Customer, CustomerFormData } from '../types/customer'
-
-const API_BASE_URL = '/api'
+import { useCustomers } from '../hooks/useCustomers'
+import type { CustomerFormData } from '../types/customer'
 
 const emptyForm: CustomerFormData = {
   name: '',
@@ -18,22 +16,28 @@ const emptyForm: CustomerFormData = {
 
 function EditCustomerPage() {
   const { id } = useParams<{ id: string }>()
-  const { state, dispatch } = useCustomerContext()
+  const {
+    customers,
+    isLoading,
+    errorMessage,
+    getCustomerById,
+    updateCustomer,
+    clearError,
+  } = useCustomers()
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState<CustomerFormData>(emptyForm)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isSaving, setIsSaving] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [isPageLoading, setIsPageLoading] = useState(true)
 
   useEffect(() => {
     if (!id) {
-      setErrorMessage('Customer id is required')
-      setIsLoading(false)
+      setIsPageLoading(false)
       return
     }
 
-    const existingCustomer = state.customers.find(
+    clearError()
+
+    const existingCustomer = customers.find(
       (customer) => customer.id === Number(id),
     )
 
@@ -49,64 +53,37 @@ function EditCustomerPage() {
         state: customerState,
         zip,
       })
-      setIsLoading(false)
+      setIsPageLoading(false)
       return
     }
 
     const fetchCustomer = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/customers/${id}`)
-
-        if (!response.ok) {
-          throw new Error('Unable to load customer')
-        }
-
-        const customer: Customer = await response.json()
+        const customer = await getCustomerById(Number(id))
         const { name, email, phone, address, city, state, zip } = customer
         setFormData({ name, email, phone, address, city, state, zip })
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : 'Unable to load customer'
-        setErrorMessage(message)
-      } finally {
-        setIsLoading(false)
+      } catch {
+        setIsPageLoading(false)
+        return
       }
+
+      setIsPageLoading(false)
     }
 
     void fetchCustomer()
-  }, [id, state.customers])
+  }, [id, customers, getCustomerById, clearError])
 
   const handleUpdateCustomer = async (nextFormData: CustomerFormData) => {
     if (!id) {
       return
     }
 
-    setIsSaving(true)
-    setErrorMessage('')
-
     try {
-      const response = await fetch(`${API_BASE_URL}/customers/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: Number(id), ...nextFormData }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Unable to update customer')
-      }
-
-      const updatedCustomer: Customer = await response.json()
-      dispatch({ type: 'UPDATE_CUSTOMER', payload: updatedCustomer })
+      await updateCustomer(Number(id), nextFormData)
 
       navigate('/')
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : 'Unable to update customer'
-      setErrorMessage(message)
-    } finally {
-      setIsSaving(false)
+    } catch {
+      return
     }
   }
 
@@ -119,13 +96,13 @@ function EditCustomerPage() {
         </Link>
       </header>
 
-      {isLoading && <p>Loading customer...</p>}
+      {isPageLoading && <p>Loading customer...</p>}
 
-      {!isLoading && (
+      {!isPageLoading && (
         <CustomerForm
           initialData={formData}
           submitLabel="Update Customer"
-          isSubmitting={isSaving}
+          isSubmitting={isLoading}
           onSubmit={handleUpdateCustomer}
           onCancel={() => navigate('/')}
         />
