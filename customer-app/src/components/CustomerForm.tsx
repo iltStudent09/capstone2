@@ -32,6 +32,13 @@ const fieldOrder: Array<keyof CustomerFormData> = [
   'zip',
 ]
 
+const stateAbbreviations = new Set([
+  'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL',
+  'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT',
+  'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+  'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'DC',
+])
+
 function normalizeFormData(data: CustomerFormData): CustomerFormData {
   return {
     name: data.name.trim(),
@@ -49,30 +56,56 @@ function validateFormData(data: CustomerFormData): CustomerFormErrors {
 
   if (!data.name) {
     errors.name = 'Name is required.'
+  } else if (data.name.length < 2) {
+    errors.name = 'Name must be at least 2 characters.'
+  } else if (data.name.length > 80) {
+    errors.name = 'Name must be 80 characters or fewer.'
+  } else if (!/^[A-Za-z][A-Za-z\s'.-]*$/.test(data.name)) {
+    errors.name = 'Name contains invalid characters.'
   }
 
   if (!data.email) {
     errors.email = 'Email is required.'
+  } else if (data.email.length > 254) {
+    errors.email = 'Email is too long.'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = 'Enter a valid email address.'
   }
 
   if (!data.phone) {
     errors.phone = 'Phone is required.'
+  } else {
+    const digitsOnly = data.phone.replace(/\D/g, '')
+    const isTenDigits = digitsOnly.length === 10
+    const isUsElevenDigits = digitsOnly.length === 11 && digitsOnly.startsWith('1')
+
+    if (!isTenDigits && !isUsElevenDigits) {
+      errors.phone = 'Enter a valid phone number.'
+    }
   }
 
   if (!data.address) {
     errors.address = 'Address is required.'
+  } else if (data.address.length < 5) {
+    errors.address = 'Address must be at least 5 characters.'
+  } else if (data.address.length > 120) {
+    errors.address = 'Address must be 120 characters or fewer.'
   }
 
   if (!data.city) {
     errors.city = 'City is required.'
+  } else if (data.city.length < 2) {
+    errors.city = 'City must be at least 2 characters.'
+  } else if (data.city.length > 80) {
+    errors.city = 'City must be 80 characters or fewer.'
+  } else if (!/^[A-Za-z][A-Za-z\s'.-]*$/.test(data.city)) {
+    errors.city = 'City contains invalid characters.'
   }
 
   if (!data.state) {
     errors.state = 'State is required.'
-  } else if (!/^[A-Z]{2}$/.test(data.state)) {
-    errors.state = 'State must be 2 uppercase letters.'
+  } else if (!/^[A-Z]{2}$/.test(data.state) || !stateAbbreviations.has(data.state)) {
+    errors.state = 'State must be a valid 2-letter abbreviation.'
   }
 
   if (!data.zip) {

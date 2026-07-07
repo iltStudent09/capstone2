@@ -7,7 +7,7 @@ import type { CustomerFormData } from '../types/customer'
 const validData: CustomerFormData = {
   name: 'Alice Johnson',
   email: 'alice@example.com',
-  phone: '555-1111',
+  phone: '555-111-1111',
   address: '123 Main St',
   city: 'Denver',
   state: 'CO',
@@ -35,7 +35,7 @@ describe('CustomerForm', () => {
 
     await user.type(screen.getByLabelText(/name/i), 'Alice')
     await user.type(screen.getByLabelText(/email/i), 'bad-email')
-    await user.type(screen.getByLabelText(/phone/i), '555-1111')
+    await user.type(screen.getByLabelText(/phone/i), '555-111-1111')
     await user.type(screen.getByLabelText(/address/i), '123 Main St')
     await user.type(screen.getByLabelText(/city/i), 'Denver')
     await user.type(screen.getByLabelText(/state/i), 'CO')
@@ -80,7 +80,7 @@ describe('CustomerForm', () => {
 
     await user.type(screen.getByLabelText(/name/i), ' Alice Johnson ')
     await user.type(screen.getByLabelText(/email/i), 'alice@example.com')
-    await user.type(screen.getByLabelText(/phone/i), '555-1111')
+    await user.type(screen.getByLabelText(/phone/i), '555-111-1111')
     await user.type(screen.getByLabelText(/address/i), '123 Main St')
     await user.type(screen.getByLabelText(/city/i), 'Denver')
     await user.type(screen.getByLabelText(/state/i), 'co')
@@ -129,7 +129,7 @@ describe('CustomerForm', () => {
 
     expect(screen.getByLabelText(/name/i)).toHaveValue('Alice Johnson')
     expect(screen.getByLabelText(/email/i)).toHaveValue('alice@example.com')
-    expect(screen.getByLabelText(/phone/i)).toHaveValue('555-1111')
+    expect(screen.getByLabelText(/phone/i)).toHaveValue('555-111-1111')
     expect(screen.getByLabelText(/address/i)).toHaveValue('123 Main St')
     expect(screen.getByLabelText(/city/i)).toHaveValue('Denver')
     expect(screen.getByLabelText(/state/i)).toHaveValue('CO')
