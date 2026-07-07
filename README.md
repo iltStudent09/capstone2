@@ -4,6 +4,30 @@
 
 - https://iltStudent09.github.io/capstone2/
 
+## Manual GitHub Actions (Build or Deploy)
+
+You can manually run CI/CD from the GitHub website:
+
+1. Open the repository on GitHub.
+2. Go to **Actions**.
+3. Select **Manual Build or Deploy**.
+4. Click **Run workflow**.
+5. Choose `build` to compile only, or `deploy` to publish to GitHub Pages.
+
+> Note: In repository settings, set **Pages** source to **GitHub Actions**.
+
+## Automatic CI
+
+- Workflow: **CI Build and Test**
+- Triggers on:
+	- pushes to `main`
+	- all pull requests
+- Runs:
+	- `npm run test:run`
+	- `npm run build`
+
+Deploy remains manual via **Manual Build or Deploy**.
+
 ## Run the Application
 
 ### Prerequisites
