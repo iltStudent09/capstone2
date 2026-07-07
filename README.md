@@ -13,8 +13,6 @@ You can manually trigger Pages deployment from the GitHub website:
 3. Select **Deploy to GitHub Pages**.
 4. Click **Run workflow**.
 
-The same workflow also deploys automatically on pushes to `main`.
-
 > Note: In repository settings, set **Pages** source to **GitHub Actions**.
 
 ## Automatic CI
