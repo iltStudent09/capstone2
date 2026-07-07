@@ -4,18 +4,16 @@
 
 - https://iltStudent09.github.io/capstone2/
 
-## GitHub Actions Deployment
+## GitHub Pages Deployment (gh-pages)
 
-You can manually trigger Pages deployment from the GitHub website:
+Deploy from local using the root script:
 
-1. Open the repository on GitHub.
-2. Go to **Actions**.
-3. Select **Deploy to GitHub Pages**.
-4. Click **Run workflow**.
+```bash
+cd /home/labadmin/Desktop/capstone2
+npm run deploy
+```
 
-> Note: In repository settings, set **Pages** source to **GitHub Actions**.
-
-Deployment is intentionally GitHub Actions-only (no local `gh-pages` deploy script).
+This builds `customer-app` and publishes `customer-app/dist` to the `gh-pages` branch.
 
 ## Automatic CI
 
@@ -27,7 +25,7 @@ Deployment is intentionally GitHub Actions-only (no local `gh-pages` deploy scri
 	- `npm run test:run`
 	- `npm run build`
 
-Deploy uses the **Deploy to GitHub Pages** workflow.
+Deploy uses the root `gh-pages` script.
 
 ## Run the Application
 
