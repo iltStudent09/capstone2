@@ -39,12 +39,51 @@ const stateAbbreviations = new Set([
   'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'DC',
 ])
 
+function formatPhoneNumber(value: string): string {
+  const digits = value.replace(/\D/g, '').slice(0, 10)
+
+  if (digits.length === 0) {
+    return ''
+  }
+
+  if (digits.length <= 3) {
+    return `(${digits}`
+  }
+
+  if (digits.length <= 6) {
+    return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+  }
+
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+}
+
 function normalizeFormData(data: CustomerFormData): CustomerFormData {
+  const toTitleCaseWords = (value: string) =>
+    value
+      .trim()
+      .replace(/\s+/g, ' ')
+      .split(' ')
+      .map((word) => {
+        if (word.length === 0) {
+          return word
+        }
+
+        const firstCharacter = word.charAt(0)
+        const rest = word.slice(1)
+
+        if (/^[A-Za-z]$/.test(firstCharacter)) {
+          return `${firstCharacter.toUpperCase()}${rest.toLowerCase()}`
+        }
+
+        return `${firstCharacter}${rest.toLowerCase()}`
+      })
+      .join(' ')
+
   return {
-    name: data.name.trim(),
-    email: data.email.trim(),
-    phone: data.phone.trim(),
-    address: data.address.trim(),
+    name: toTitleCaseWords(data.name),
+    email: data.email.trim().toLowerCase(),
+    phone: formatPhoneNumber(data.phone),
+    address: toTitleCaseWords(data.address),
     city: data.city.trim(),
     state: data.state.trim().toUpperCase(),
     zip: data.zip.trim(),
@@ -56,6 +95,8 @@ function validateFormData(data: CustomerFormData): CustomerFormErrors {
 
   if (!data.name) {
     errors.name = 'Name is required.'
+  } else if (data.name.split(/\s+/).length < 2) {
+    errors.name = 'Enter first and last name.'
   } else if (data.name.length < 2) {
     errors.name = 'Name must be at least 2 characters.'
   } else if (data.name.length > 80) {
@@ -66,6 +107,8 @@ function validateFormData(data: CustomerFormData): CustomerFormErrors {
 
   if (!data.email) {
     errors.email = 'Email is required.'
+  } else if (/\s/.test(data.email)) {
+    errors.email = 'Email cannot contain spaces.'
   } else if (data.email.length > 254) {
     errors.email = 'Email is too long.'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
@@ -76,11 +119,8 @@ function validateFormData(data: CustomerFormData): CustomerFormErrors {
     errors.phone = 'Phone is required.'
   } else {
     const digitsOnly = data.phone.replace(/\D/g, '')
-    const isTenDigits = digitsOnly.length === 10
-    const isUsElevenDigits = digitsOnly.length === 11 && digitsOnly.startsWith('1')
-
-    if (!isTenDigits && !isUsElevenDigits) {
-      errors.phone = 'Enter a valid phone number.'
+    if (digitsOnly.length !== 10) {
+      errors.phone = 'Enter a valid 10-digit phone number.'
     }
   }
 
@@ -124,7 +164,16 @@ function CustomerForm({
   onSubmit,
   onCancel,
 }: CustomerFormProps) {
-  const [formData, setFormData] = useState<CustomerFormData>(initialData ?? emptyForm)
+  const [formData, setFormData] = useState<CustomerFormData>(() => {
+    if (!initialData) {
+      return emptyForm
+    }
+
+    return {
+      ...initialData,
+      phone: formatPhoneNumber(initialData.phone),
+    }
+  })
   const [fieldErrors, setFieldErrors] = useState<CustomerFormErrors>({})
 
   const hasErrors = useMemo(
@@ -133,7 +182,29 @@ function CustomerForm({
   )
 
   const handleFieldChange = (field: keyof CustomerFormData, value: string) => {
-    const nextValue = field === 'state' ? value.toUpperCase() : value
+    const nextValue = (() => {
+      if (field === 'state') {
+        return value.toUpperCase()
+      }
+
+      if (field === 'phone') {
+        return formatPhoneNumber(value)
+      }
+
+      if (field === 'email') {
+        return value.replace(/[^a-zA-Z0-9@._%+-]/g, '').toLowerCase()
+      }
+
+      if (field === 'name' || field === 'address') {
+        return value
+          .replace(/\s+/g, ' ')
+          .replace(/\b([A-Za-z])(.*?)(?=\s|$)/g, (_, first: string, rest: string) =>
+            `${first.toUpperCase()}${rest.toLowerCase()}`,
+          )
+      }
+
+      return value
+    })()
 
     setFormData((previous) => ({
       ...previous,
@@ -186,6 +257,11 @@ function CustomerForm({
         <input
           type="email"
           value={formData.email}
+          onKeyDown={(event) => {
+            if (event.key === ' ') {
+              event.preventDefault()
+            }
+          }}
           onChange={(event) => handleFieldChange('email', event.target.value)}
         />
         {fieldErrors.email && <p className="field-error">{fieldErrors.email}</p>}
@@ -195,6 +271,7 @@ function CustomerForm({
         Phone
         <input
           type="text"
+          inputMode="numeric"
           value={formData.phone}
           onChange={(event) => handleFieldChange('phone', event.target.value)}
         />

@@ -7,7 +7,7 @@ import type { CustomerFormData } from '../types/customer'
 const validData: CustomerFormData = {
   name: 'Alice Johnson',
   email: 'alice@example.com',
-  phone: '555-111-1111',
+  phone: '(555) 111-1111',
   address: '123 Main St',
   city: 'Denver',
   state: 'CO',
@@ -35,7 +35,7 @@ describe('CustomerForm', () => {
 
     await user.type(screen.getByLabelText(/name/i), 'Alice')
     await user.type(screen.getByLabelText(/email/i), 'bad-email')
-    await user.type(screen.getByLabelText(/phone/i), '555-111-1111')
+    await user.type(screen.getByLabelText(/phone/i), '5551111111')
     await user.type(screen.getByLabelText(/address/i), '123 Main St')
     await user.type(screen.getByLabelText(/city/i), 'Denver')
     await user.type(screen.getByLabelText(/state/i), 'CO')
@@ -80,8 +80,8 @@ describe('CustomerForm', () => {
 
     await user.type(screen.getByLabelText(/name/i), ' Alice Johnson ')
     await user.type(screen.getByLabelText(/email/i), 'alice@example.com')
-    await user.type(screen.getByLabelText(/phone/i), '555-111-1111')
-    await user.type(screen.getByLabelText(/address/i), '123 Main St')
+    await user.type(screen.getByLabelText(/phone/i), '5551111111')
+    await user.type(screen.getByLabelText(/address/i), '123 main st')
     await user.type(screen.getByLabelText(/city/i), 'Denver')
     await user.type(screen.getByLabelText(/state/i), 'co')
     await user.type(screen.getByLabelText(/zip/i), '80203')
@@ -95,6 +95,7 @@ describe('CustomerForm', () => {
     expect(onSubmit).toHaveBeenCalledWith({
       ...validData,
       name: 'Alice Johnson',
+      address: '123 Main St',
       state: 'CO',
     })
   })
@@ -129,10 +130,59 @@ describe('CustomerForm', () => {
 
     expect(screen.getByLabelText(/name/i)).toHaveValue('Alice Johnson')
     expect(screen.getByLabelText(/email/i)).toHaveValue('alice@example.com')
-    expect(screen.getByLabelText(/phone/i)).toHaveValue('555-111-1111')
+    expect(screen.getByLabelText(/phone/i)).toHaveValue('(555) 111-1111')
     expect(screen.getByLabelText(/address/i)).toHaveValue('123 Main St')
     expect(screen.getByLabelText(/city/i)).toHaveValue('Denver')
     expect(screen.getByLabelText(/state/i)).toHaveValue('CO')
     expect(screen.getByLabelText(/zip/i)).toHaveValue('80203')
+  })
+
+  it('formats phone while typing and saves formatted value', async () => {
+    const user = userEvent.setup()
+    const onSubmit = vi.fn().mockResolvedValue(undefined)
+
+    render(
+      <CustomerForm
+        submitLabel="Create Customer"
+        isSubmitting={false}
+        onSubmit={onSubmit}
+      />,
+    )
+
+    await user.type(screen.getByLabelText(/name/i), 'Alice Johnson')
+    await user.type(screen.getByLabelText(/email/i), 'alice@example.com')
+    await user.type(screen.getByLabelText(/phone/i), '5551111111')
+    await user.type(screen.getByLabelText(/address/i), '123 Main St')
+    await user.type(screen.getByLabelText(/city/i), 'Denver')
+    await user.type(screen.getByLabelText(/state/i), 'CO')
+    await user.type(screen.getByLabelText(/zip/i), '80203')
+
+    expect(screen.getByLabelText(/phone/i)).toHaveValue('(555) 111-1111')
+
+    await user.click(screen.getByRole('button', { name: 'Create Customer' }))
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+    })
+
+    expect(onSubmit).toHaveBeenCalledWith(
+      expect.objectContaining({ phone: '(555) 111-1111' }),
+    )
+  })
+
+  it('does not accept spaces in the email field', async () => {
+    const user = userEvent.setup()
+
+    render(
+      <CustomerForm
+        submitLabel="Create Customer"
+        isSubmitting={false}
+        onSubmit={vi.fn().mockResolvedValue(undefined)}
+      />,
+    )
+
+    await user.type(screen.getByLabelText(/email/i), 'alice smith@example.com')
+
+    expect(screen.getByLabelText(/email/i)).toHaveValue('alicesmith@example.com')
   })
 })

@@ -1,26 +1,59 @@
 import { Link } from 'react-router-dom'
 import type { Customer } from '../types/customer'
 
+export type SortableField = 'name' | 'email' | 'phone' | 'city' | 'state'
+
 type CustomerListProps = {
   customers: Customer[]
   deletingCustomerId?: number | null
   onDeleteCustomer: (customer: Customer) => void
+  sortField?: SortableField
+  sortDirection?: 'asc' | 'desc'
+  onRequestSort?: (field: SortableField) => void
 }
 
 function CustomerList({
   customers,
   deletingCustomerId = null,
   onDeleteCustomer,
+  sortField,
+  sortDirection,
+  onRequestSort,
 }: CustomerListProps) {
+  const renderSortableHeader = (label: string, field: SortableField) => {
+    if (!onRequestSort) {
+      return label
+    }
+
+    const isCurrentSortField = sortField === field
+    const indicator =
+      isCurrentSortField && sortDirection === 'asc'
+        ? ' ↑'
+        : isCurrentSortField && sortDirection === 'desc'
+          ? ' ↓'
+          : ''
+
+    return (
+      <button
+        type="button"
+        className="table-sort"
+        onClick={() => onRequestSort(field)}
+      >
+        {label}
+        {indicator}
+      </button>
+    )
+  }
+
   return (
     <table className="customer-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>City</th>
-          <th>State</th>
+          <th>{renderSortableHeader('Name', 'name')}</th>
+          <th>{renderSortableHeader('Email', 'email')}</th>
+          <th>{renderSortableHeader('Phone', 'phone')}</th>
+          <th>{renderSortableHeader('City', 'city')}</th>
+          <th>{renderSortableHeader('State', 'state')}</th>
           <th>Actions</th>
         </tr>
       </thead>
