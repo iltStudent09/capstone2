@@ -6,9 +6,11 @@ import CustomerListPage from './pages/CustomerListPage'
 import EditCustomerPage from './pages/EditCustomerPage'
 import './App.css'
 
+const routerBase = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBase}>
       <ErrorBoundary>
         <Routes>
           <Route element={<Layout />}>
