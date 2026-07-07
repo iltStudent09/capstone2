@@ -1,11 +1,12 @@
 {
-    "homepage": "https://iltStudent09.github.io/capstone2/",
+  "homepage": "https://iltStudent09.github.io/capstone2/",
   "scripts": {
-    "dev": "vite",
+    "dev": "cd customer-app && npm run dev",
     "api": "json-server --watch db.json --port 3001",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "build": "cd customer-app && npm run build",
+    "preview": "cd customer-app && npm run preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d customer-app/dist"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^6.9.1",
