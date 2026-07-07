@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
 import AddCustomerPage from './pages/AddCustomerPage'
 import CustomerListPage from './pages/CustomerListPage'
@@ -8,14 +9,16 @@ import './App.css'
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<CustomerListPage />} />
-          <Route path="/add" element={<AddCustomerPage />} />
-          <Route path="/edit/:id" element={<EditCustomerPage />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<CustomerListPage />} />
+            <Route path="/add" element={<AddCustomerPage />} />
+            <Route path="/edit/:id" element={<EditCustomerPage />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   )
 }
