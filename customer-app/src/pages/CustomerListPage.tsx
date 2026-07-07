@@ -4,7 +4,45 @@ import CustomerList, { type SortableField } from '../components/CustomerList'
 import { useCustomers } from '../hooks/useCustomers'
 import type { Customer } from '../types/customer'
 
-const PAGE_SIZE = 5
+const PAGE_SIZE = 10
+const SORT_STORAGE_KEY = 'customer-list-sort'
+
+function readStoredSort(): { field: SortableField; direction: 'asc' | 'desc' } {
+  const fallback = { field: 'name' as SortableField, direction: 'asc' as const }
+
+  if (typeof window === 'undefined') {
+    return fallback
+  }
+
+  const rawStoredSort = window.localStorage.getItem(SORT_STORAGE_KEY)
+
+  if (!rawStoredSort) {
+    return fallback
+  }
+
+  try {
+    const parsedSort = JSON.parse(rawStoredSort) as {
+      field?: SortableField
+      direction?: 'asc' | 'desc'
+    }
+
+    if (
+      parsedSort.field &&
+      ['name', 'email', 'phone', 'city', 'state'].includes(parsedSort.field) &&
+      parsedSort.direction &&
+      ['asc', 'desc'].includes(parsedSort.direction)
+    ) {
+      return {
+        field: parsedSort.field,
+        direction: parsedSort.direction,
+      }
+    }
+  } catch {
+    return fallback
+  }
+
+  return fallback
+}
 
 function CustomerListPage() {
   const {
@@ -20,8 +58,12 @@ function CustomerListPage() {
   const [deleteErrorMessage, setDeleteErrorMessage] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedStateFilter, setSelectedStateFilter] = useState('ALL')
-  const [sortField, setSortField] = useState<SortableField>('name')
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
+  const [sortField, setSortField] = useState<SortableField>(
+    () => readStoredSort().field,
+  )
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(
+    () => readStoredSort().direction,
+  )
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
@@ -31,6 +73,17 @@ function CustomerListPage() {
   useEffect(() => {
     setCurrentPage(1)
   }, [searchQuery, selectedStateFilter])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.localStorage.setItem(
+      SORT_STORAGE_KEY,
+      JSON.stringify({ field: sortField, direction: sortDirection }),
+    )
+  }, [sortField, sortDirection])
 
   const availableStates = useMemo(() => {
     return Array.from(new Set(customers.map((customer) => customer.state))).sort(

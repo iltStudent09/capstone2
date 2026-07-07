@@ -36,6 +36,12 @@
   gap: 10px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .nav-link {
   text-decoration: none;
   color: var(--text-h);
@@ -47,6 +53,15 @@
 .nav-link-active {
   background: var(--accent-bg);
   border-color: var(--accent-border);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 .layout-main {
@@ -62,6 +77,12 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 14px 16px;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .app-title {
