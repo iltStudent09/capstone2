@@ -4,15 +4,16 @@
 
 - https://iltStudent09.github.io/capstone2/
 
-## Manual GitHub Actions (Build or Deploy)
+## GitHub Actions Deployment
 
-You can manually run CI/CD from the GitHub website:
+You can manually trigger Pages deployment from the GitHub website:
 
 1. Open the repository on GitHub.
 2. Go to **Actions**.
-3. Select **Manual Build or Deploy**.
+3. Select **Deploy to GitHub Pages**.
 4. Click **Run workflow**.
-5. Choose `build` to compile only, or `deploy` to publish to GitHub Pages.
+
+The same workflow also deploys automatically on pushes to `main`.
 
 > Note: In repository settings, set **Pages** source to **GitHub Actions**.
 
@@ -26,7 +27,7 @@ You can manually run CI/CD from the GitHub website:
 	- `npm run test:run`
 	- `npm run build`
 
-Deploy remains manual via **Manual Build or Deploy**.
+Deploy uses the **Deploy to GitHub Pages** workflow.
 
 ## Run the Application
 
