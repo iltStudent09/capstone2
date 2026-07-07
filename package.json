@@ -1,18 +1,14 @@
 {
-  "homepage": "https://iltStudent09.github.io/capstone2/",
   "scripts": {
     "dev": "cd customer-app && npm run dev",
     "api": "json-server --watch db.json --port 3001",
     "build": "cd customer-app && npm run build",
-    "preview": "cd customer-app && npm run preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d customer-app/dist"
+    "preview": "cd customer-app && npm run preview"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "gh-pages": "^6.3.0",
     "json-server": "^0.17.4",
     "react-router-dom": "^7.18.1",
     "vitest": "^4.1.10"

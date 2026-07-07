@@ -15,6 +15,8 @@ You can manually trigger Pages deployment from the GitHub website:
 
 > Note: In repository settings, set **Pages** source to **GitHub Actions**.
 
+Deployment is intentionally GitHub Actions-only (no local `gh-pages` deploy script).
+
 ## Automatic CI
 
 - Workflow: **CI Build and Test**
