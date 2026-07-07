@@ -22,6 +22,9 @@ export type CustomerAction =
   | { type: 'UPDATE_CUSTOMER_START' }
   | { type: 'UPDATE_CUSTOMER_SUCCESS'; payload: Customer }
   | { type: 'UPDATE_CUSTOMER_ERROR'; payload: string }
+  | { type: 'DELETE_CUSTOMER_START' }
+  | { type: 'DELETE_CUSTOMER_SUCCESS'; payload: number }
+  | { type: 'DELETE_CUSTOMER_ERROR'; payload: string }
   | { type: 'CLEAR_CUSTOMER_ERROR' }
 
 const initialState: CustomerState = {
@@ -62,6 +65,7 @@ export function customerReducer(
     case 'FETCH_CUSTOMERS_START':
     case 'CREATE_CUSTOMER_START':
     case 'UPDATE_CUSTOMER_START':
+    case 'DELETE_CUSTOMER_START':
       return {
         ...state,
         isLoading: true,
@@ -90,9 +94,19 @@ export function customerReducer(
         isLoading: false,
         errorMessage: '',
       }
+    case 'DELETE_CUSTOMER_SUCCESS':
+      return {
+        ...state,
+        customers: state.customers.filter(
+          (customer) => customer.id !== action.payload,
+        ),
+        isLoading: false,
+        errorMessage: '',
+      }
     case 'FETCH_CUSTOMERS_ERROR':
     case 'CREATE_CUSTOMER_ERROR':
     case 'UPDATE_CUSTOMER_ERROR':
+    case 'DELETE_CUSTOMER_ERROR':
       return {
         ...state,
         isLoading: false,

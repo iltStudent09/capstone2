@@ -52,19 +52,13 @@ export function useCustomers() {
       )
       dispatch({ type: 'CREATE_CUSTOMER_SUCCESS', payload: customer })
       return customer
-    } catch {
-      const nextId =
-        state.customers.length > 0
-          ? Math.max(...state.customers.map((customer) => customer.id)) + 1
-          : 1
-      const localCustomer: Customer = {
-        id: nextId,
-        ...formData,
-      }
-      dispatch({ type: 'CREATE_CUSTOMER_SUCCESS', payload: localCustomer })
-      return localCustomer
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Unable to create customer'
+      dispatch({ type: 'CREATE_CUSTOMER_ERROR', payload: message })
+      throw new Error(message)
     }
-  }, [api, dispatch, state.customers])
+  }, [api, dispatch])
 
   const updateCustomer = useCallback(async (id: number, formData: CustomerFormData) => {
     dispatch({ type: 'UPDATE_CUSTOMER_START' })
@@ -76,23 +70,26 @@ export function useCustomers() {
       })
       dispatch({ type: 'UPDATE_CUSTOMER_SUCCESS', payload: customer })
       return customer
-    } catch {
-      const localCustomer: Customer = {
-        id,
-        ...formData,
-      }
-      dispatch({ type: 'UPDATE_CUSTOMER_SUCCESS', payload: localCustomer })
-      return localCustomer
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Unable to update customer'
+      dispatch({ type: 'UPDATE_CUSTOMER_ERROR', payload: message })
+      throw new Error(message)
     }
   }, [api, dispatch])
 
   const deleteCustomer = useCallback(async (id: number) => {
+    dispatch({ type: 'DELETE_CUSTOMER_START' })
+
     try {
       await api.remove<void>(`/customers/${id}`)
-    } catch {
-      dispatch({ type: 'CLEAR_CUSTOMER_ERROR' })
+      dispatch({ type: 'DELETE_CUSTOMER_SUCCESS', payload: id })
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Unable to delete customer'
+      dispatch({ type: 'DELETE_CUSTOMER_ERROR', payload: message })
+      throw new Error(message)
     }
-    dispatch({ type: 'DELETE_CUSTOMER', payload: id })
   }, [api, dispatch])
 
   const clearError = useCallback(() => {
