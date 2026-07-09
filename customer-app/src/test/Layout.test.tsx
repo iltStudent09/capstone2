@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout'
+import { useAuth } from '../hooks/useAuth'
+
+vi.mock('../hooks/useAuth', () => ({
+  useAuth: vi.fn(),
+}))
+
+const mockedUseAuth = vi.mocked(useAuth)
 
 function mockMatchMedia(matches: boolean) {
   vi.stubGlobal(
@@ -37,6 +44,19 @@ describe('Layout theme behavior', () => {
     window.localStorage.clear()
     document.documentElement.removeAttribute('data-theme')
     vi.unstubAllGlobals()
+    mockedUseAuth.mockReturnValue({
+      currentUser: {
+        id: 1,
+        name: 'System Admin',
+        email: 'admin@company.com',
+        phone: '(555) 900-0001',
+        role: 'admin',
+      },
+      isAuthenticated: true,
+      login: vi.fn(),
+      register: vi.fn(),
+      logout: vi.fn(),
+    })
   })
 
   it('loads saved dark theme and toggles/persists to light', async () => {

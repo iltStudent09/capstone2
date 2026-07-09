@@ -2,7 +2,7 @@
   "homepage": "https://iltStudent09.github.io/capstone2/",
   "scripts": {
     "dev": "cd customer-app && npm run dev",
-    "api": "json-server --watch db.json --port 3001",
+    "api": "node server.js",
     "build": "cd customer-app && npm run build",
     "preview": "cd customer-app && npm run preview",
     "predeploy": "npm run build",

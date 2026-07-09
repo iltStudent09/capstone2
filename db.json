@@ -1,26 +1,6 @@
 {
   "customers": [
     {
-      "id": 1,
-      "name": "Alice Johnson",
-      "email": "alice.johnson@example.com",
-      "phone": "(555) 101-2201",
-      "address": "123 Maple St",
-      "city": "Denver",
-      "state": "CO",
-      "zip": "80203"
-    },
-    {
-      "id": 2,
-      "name": "Brian Lee",
-      "email": "brian.lee@example.com",
-      "phone": "(555) 102-3344",
-      "address": "456 Oak Ave",
-      "city": "Austin",
-      "state": "TX",
-      "zip": "78701"
-    },
-    {
       "id": 4,
       "name": "Derek Patel",
       "email": "derek.patel@example.com",
@@ -28,17 +8,9 @@
       "address": "321 Cedar Ln",
       "city": "Seattle",
       "state": "WA",
-      "zip": "98101"
-    },
-    {
-      "id": 5,
-      "name": "Emma Wilson",
-      "email": "emma.wilson@example.com",
-      "phone": "(555) 105-6677",
-      "address": "654 Birch Blvd",
-      "city": "Chicago",
-      "state": "IL",
-      "zip": "60601"
+      "zip": "98101",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 7,
@@ -48,7 +20,9 @@
       "address": "159 Spruce Ct",
       "city": "Boston",
       "state": "MA",
-      "zip": "02108"
+      "zip": "02108",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 8,
@@ -58,7 +32,9 @@
       "address": "753 Elm St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "37201"
+      "zip": "37201",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "name": "Test User",
@@ -68,7 +44,9 @@
       "city": "Testville",
       "state": "TX",
       "zip": "75001",
-      "id": 9
+      "id": 9,
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "name": "Tom Hardy",
@@ -78,7 +56,9 @@
       "city": "Topeka",
       "state": "KS",
       "zip": "42494",
-      "id": 10
+      "id": 10,
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "name": "Tom Ford",
@@ -88,7 +68,9 @@
       "city": "Boston",
       "state": "MA",
       "zip": "02121",
-      "id": 11
+      "id": 11,
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "name": "Dave Chappelle",
@@ -98,7 +80,9 @@
       "city": "Boston",
       "state": "MA",
       "zip": "02121",
-      "id": 12
+      "id": 12,
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 13,
@@ -108,7 +92,9 @@
       "address": "113 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "10247"
+      "zip": "10247",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 14,
@@ -118,7 +104,9 @@
       "address": "114 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "10266"
+      "zip": "10266",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 15,
@@ -128,7 +116,9 @@
       "address": "115 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "10285"
+      "zip": "10285",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 16,
@@ -138,7 +128,9 @@
       "address": "116 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "10304"
+      "zip": "10304",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 17,
@@ -148,7 +140,9 @@
       "address": "117 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "10323"
+      "zip": "10323",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 18,
@@ -158,7 +152,9 @@
       "address": "118 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "10342"
+      "zip": "10342",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 19,
@@ -168,7 +164,9 @@
       "address": "119 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "10361"
+      "zip": "10361",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 20,
@@ -178,7 +176,9 @@
       "address": "120 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "10380"
+      "zip": "10380",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 21,
@@ -188,7 +188,9 @@
       "address": "121 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "10399"
+      "zip": "10399",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 22,
@@ -198,7 +200,9 @@
       "address": "122 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "10418"
+      "zip": "10418",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 23,
@@ -208,7 +212,9 @@
       "address": "123 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "10437"
+      "zip": "10437",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 24,
@@ -218,7 +224,9 @@
       "address": "124 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "10456"
+      "zip": "10456",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 25,
@@ -228,7 +236,9 @@
       "address": "125 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "10475"
+      "zip": "10475",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 26,
@@ -238,7 +248,9 @@
       "address": "126 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "10494"
+      "zip": "10494",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 27,
@@ -248,7 +260,9 @@
       "address": "127 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "10513"
+      "zip": "10513",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 28,
@@ -258,7 +272,9 @@
       "address": "128 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "10532"
+      "zip": "10532",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 29,
@@ -268,7 +284,9 @@
       "address": "129 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "10551"
+      "zip": "10551",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 30,
@@ -278,7 +296,9 @@
       "address": "130 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "10570"
+      "zip": "10570",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 31,
@@ -288,7 +308,9 @@
       "address": "131 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "10589"
+      "zip": "10589",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 32,
@@ -298,7 +320,9 @@
       "address": "132 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "10608"
+      "zip": "10608",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 33,
@@ -308,7 +332,9 @@
       "address": "133 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "10627"
+      "zip": "10627",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 34,
@@ -318,7 +344,9 @@
       "address": "134 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "10646"
+      "zip": "10646",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 35,
@@ -328,7 +356,9 @@
       "address": "135 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "10665"
+      "zip": "10665",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 36,
@@ -338,7 +368,9 @@
       "address": "136 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "10684"
+      "zip": "10684",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 37,
@@ -348,7 +380,9 @@
       "address": "137 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "10703"
+      "zip": "10703",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 38,
@@ -358,7 +392,9 @@
       "address": "138 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "10722"
+      "zip": "10722",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 39,
@@ -368,7 +404,9 @@
       "address": "139 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "10741"
+      "zip": "10741",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 40,
@@ -378,7 +416,9 @@
       "address": "140 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "10760"
+      "zip": "10760",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 41,
@@ -388,7 +428,9 @@
       "address": "141 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "10779"
+      "zip": "10779",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 42,
@@ -398,7 +440,9 @@
       "address": "142 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "10798"
+      "zip": "10798",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 43,
@@ -408,7 +452,9 @@
       "address": "143 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "10817"
+      "zip": "10817",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 44,
@@ -418,7 +464,9 @@
       "address": "144 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "10836"
+      "zip": "10836",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 45,
@@ -428,7 +476,9 @@
       "address": "145 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "10855"
+      "zip": "10855",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 46,
@@ -438,7 +488,9 @@
       "address": "146 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "10874"
+      "zip": "10874",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 47,
@@ -448,7 +500,9 @@
       "address": "147 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "10893"
+      "zip": "10893",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 48,
@@ -458,7 +512,9 @@
       "address": "148 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "10912"
+      "zip": "10912",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 49,
@@ -468,7 +524,9 @@
       "address": "149 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "10931"
+      "zip": "10931",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 50,
@@ -478,7 +536,9 @@
       "address": "150 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "10950"
+      "zip": "10950",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 51,
@@ -488,7 +548,9 @@
       "address": "151 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "10969"
+      "zip": "10969",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 52,
@@ -498,7 +560,9 @@
       "address": "152 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "10988"
+      "zip": "10988",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 53,
@@ -508,7 +572,9 @@
       "address": "153 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "11007"
+      "zip": "11007",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 54,
@@ -518,7 +584,9 @@
       "address": "154 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "11026"
+      "zip": "11026",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 55,
@@ -528,7 +596,9 @@
       "address": "155 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "11045"
+      "zip": "11045",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 56,
@@ -538,7 +608,9 @@
       "address": "156 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "11064"
+      "zip": "11064",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 57,
@@ -548,7 +620,9 @@
       "address": "157 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "11083"
+      "zip": "11083",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 58,
@@ -558,7 +632,9 @@
       "address": "158 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "11102"
+      "zip": "11102",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 59,
@@ -568,7 +644,9 @@
       "address": "159 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "11121"
+      "zip": "11121",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 60,
@@ -578,7 +656,9 @@
       "address": "160 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "11140"
+      "zip": "11140",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 61,
@@ -588,7 +668,9 @@
       "address": "161 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "11159"
+      "zip": "11159",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 62,
@@ -598,7 +680,9 @@
       "address": "162 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "11178"
+      "zip": "11178",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 63,
@@ -608,7 +692,9 @@
       "address": "163 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "11197"
+      "zip": "11197",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 64,
@@ -618,7 +704,9 @@
       "address": "164 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "11216"
+      "zip": "11216",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 65,
@@ -628,7 +716,9 @@
       "address": "165 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "11235"
+      "zip": "11235",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 66,
@@ -638,7 +728,9 @@
       "address": "166 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "11254"
+      "zip": "11254",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 67,
@@ -648,7 +740,9 @@
       "address": "167 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "11273"
+      "zip": "11273",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 68,
@@ -658,7 +752,9 @@
       "address": "168 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "11292"
+      "zip": "11292",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 69,
@@ -668,7 +764,9 @@
       "address": "169 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "11311"
+      "zip": "11311",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 70,
@@ -678,7 +776,9 @@
       "address": "170 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "11330"
+      "zip": "11330",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 71,
@@ -688,7 +788,9 @@
       "address": "171 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "11349"
+      "zip": "11349",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 72,
@@ -698,7 +800,9 @@
       "address": "172 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "11368"
+      "zip": "11368",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 73,
@@ -708,7 +812,9 @@
       "address": "173 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "11387"
+      "zip": "11387",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 74,
@@ -718,7 +824,9 @@
       "address": "174 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "11406"
+      "zip": "11406",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 75,
@@ -728,7 +836,9 @@
       "address": "175 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "11425"
+      "zip": "11425",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 76,
@@ -738,7 +848,9 @@
       "address": "176 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "11444"
+      "zip": "11444",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 77,
@@ -748,7 +860,9 @@
       "address": "177 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "11463"
+      "zip": "11463",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 78,
@@ -758,7 +872,9 @@
       "address": "178 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "11482"
+      "zip": "11482",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 79,
@@ -768,7 +884,9 @@
       "address": "179 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "11501"
+      "zip": "11501",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 80,
@@ -778,7 +896,9 @@
       "address": "180 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "11520"
+      "zip": "11520",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 81,
@@ -788,7 +908,9 @@
       "address": "181 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "11539"
+      "zip": "11539",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 82,
@@ -798,7 +920,9 @@
       "address": "182 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "11558"
+      "zip": "11558",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 83,
@@ -808,7 +932,9 @@
       "address": "183 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "11577"
+      "zip": "11577",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 84,
@@ -818,7 +944,9 @@
       "address": "184 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "11596"
+      "zip": "11596",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 85,
@@ -828,7 +956,9 @@
       "address": "185 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "11615"
+      "zip": "11615",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 86,
@@ -838,7 +968,9 @@
       "address": "186 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "11634"
+      "zip": "11634",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 87,
@@ -848,7 +980,9 @@
       "address": "187 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "11653"
+      "zip": "11653",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 88,
@@ -858,7 +992,9 @@
       "address": "188 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "11672"
+      "zip": "11672",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 89,
@@ -868,7 +1004,9 @@
       "address": "189 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "11691"
+      "zip": "11691",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 90,
@@ -878,7 +1016,9 @@
       "address": "190 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "11710"
+      "zip": "11710",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 91,
@@ -888,7 +1028,9 @@
       "address": "191 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "11729"
+      "zip": "11729",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 92,
@@ -898,7 +1040,9 @@
       "address": "192 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "11748"
+      "zip": "11748",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 93,
@@ -908,7 +1052,9 @@
       "address": "193 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "11767"
+      "zip": "11767",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 94,
@@ -918,7 +1064,9 @@
       "address": "194 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "11786"
+      "zip": "11786",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 95,
@@ -928,7 +1076,9 @@
       "address": "195 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "11805"
+      "zip": "11805",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 96,
@@ -938,7 +1088,9 @@
       "address": "196 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "11824"
+      "zip": "11824",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 97,
@@ -948,7 +1100,9 @@
       "address": "197 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "11843"
+      "zip": "11843",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 98,
@@ -958,7 +1112,9 @@
       "address": "198 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "11862"
+      "zip": "11862",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 99,
@@ -968,17 +1124,9 @@
       "address": "199 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "11881"
-    },
-    {
-      "id": 100,
-      "name": "Customer 100",
-      "email": "customer100@example.com",
-      "phone": "(555) 200-7300",
-      "address": "200 Sample St",
-      "city": "Chicago",
-      "state": "IL",
-      "zip": "11900"
+      "zip": "11881",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 101,
@@ -988,7 +1136,9 @@
       "address": "201 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "11919"
+      "zip": "11919",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 102,
@@ -998,7 +1148,9 @@
       "address": "202 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "11938"
+      "zip": "11938",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 103,
@@ -1008,7 +1160,9 @@
       "address": "203 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "11957"
+      "zip": "11957",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 104,
@@ -1018,7 +1172,9 @@
       "address": "204 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "11976"
+      "zip": "11976",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 105,
@@ -1028,7 +1184,9 @@
       "address": "205 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "11995"
+      "zip": "11995",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 106,
@@ -1038,7 +1196,9 @@
       "address": "206 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "12014"
+      "zip": "12014",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 107,
@@ -1048,7 +1208,9 @@
       "address": "207 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "12033"
+      "zip": "12033",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 108,
@@ -1058,7 +1220,9 @@
       "address": "208 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "12052"
+      "zip": "12052",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 109,
@@ -1068,7 +1232,9 @@
       "address": "209 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "12071"
+      "zip": "12071",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 110,
@@ -1078,7 +1244,9 @@
       "address": "210 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "12090"
+      "zip": "12090",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 111,
@@ -1088,7 +1256,9 @@
       "address": "211 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "12109"
+      "zip": "12109",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 112,
@@ -1098,7 +1268,9 @@
       "address": "212 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "12128"
+      "zip": "12128",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 113,
@@ -1108,7 +1280,9 @@
       "address": "213 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "12147"
+      "zip": "12147",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 114,
@@ -1118,7 +1292,9 @@
       "address": "214 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "12166"
+      "zip": "12166",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 115,
@@ -1128,7 +1304,9 @@
       "address": "215 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "12185"
+      "zip": "12185",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 116,
@@ -1138,7 +1316,9 @@
       "address": "216 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "12204"
+      "zip": "12204",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 117,
@@ -1148,7 +1328,9 @@
       "address": "217 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "12223"
+      "zip": "12223",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 118,
@@ -1158,7 +1340,9 @@
       "address": "218 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "12242"
+      "zip": "12242",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 119,
@@ -1168,7 +1352,9 @@
       "address": "219 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "12261"
+      "zip": "12261",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 120,
@@ -1178,7 +1364,9 @@
       "address": "220 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "12280"
+      "zip": "12280",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 121,
@@ -1188,7 +1376,9 @@
       "address": "221 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "12299"
+      "zip": "12299",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 122,
@@ -1198,7 +1388,9 @@
       "address": "222 Sample St",
       "city": "Austin",
       "state": "TX",
-      "zip": "12318"
+      "zip": "12318",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 123,
@@ -1208,7 +1400,9 @@
       "address": "223 Sample St",
       "city": "Seattle",
       "state": "WA",
-      "zip": "12337"
+      "zip": "12337",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 124,
@@ -1218,7 +1412,9 @@
       "address": "224 Sample St",
       "city": "Chicago",
       "state": "IL",
-      "zip": "12356"
+      "zip": "12356",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 125,
@@ -1228,7 +1424,9 @@
       "address": "225 Sample St",
       "city": "Boston",
       "state": "MA",
-      "zip": "12375"
+      "zip": "12375",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 126,
@@ -1238,7 +1436,9 @@
       "address": "226 Sample St",
       "city": "Nashville",
       "state": "TN",
-      "zip": "12394"
+      "zip": "12394",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 127,
@@ -1248,7 +1448,9 @@
       "address": "227 Sample St",
       "city": "Phoenix",
       "state": "AZ",
-      "zip": "12413"
+      "zip": "12413",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 128,
@@ -1258,7 +1460,9 @@
       "address": "228 Sample St",
       "city": "Miami",
       "state": "FL",
-      "zip": "12432"
+      "zip": "12432",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 129,
@@ -1268,7 +1472,9 @@
       "address": "229 Sample St",
       "city": "Portland",
       "state": "OR",
-      "zip": "12451"
+      "zip": "12451",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 130,
@@ -1278,7 +1484,9 @@
       "address": "230 Sample St",
       "city": "Madison",
       "state": "WI",
-      "zip": "12470"
+      "zip": "12470",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 131,
@@ -1288,7 +1496,9 @@
       "address": "231 Sample St",
       "city": "Atlanta",
       "state": "GA",
-      "zip": "12489"
+      "zip": "12489",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
     },
     {
       "id": 132,
@@ -1298,7 +1508,9 @@
       "address": "232 Sample St",
       "city": "Columbus",
       "state": "OH",
-      "zip": "12508"
+      "zip": "12508",
+      "createdByUserId": 2,
+      "updatedByUserId": 2
     },
     {
       "id": 133,
@@ -1308,7 +1520,43 @@
       "address": "233 Sample St",
       "city": "Denver",
       "state": "CO",
-      "zip": "12527"
+      "zip": "12527",
+      "createdByUserId": 3,
+      "updatedByUserId": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@company.com",
+      "password": "admin123",
+      "role": "admin",
+      "name": "System Admin",
+      "phone": "(555) 900-0001"
+    },
+    {
+      "id": 2,
+      "email": "user1@company.com",
+      "password": "user123",
+      "role": "user",
+      "name": "User One",
+      "phone": "(555) 900-0002"
+    },
+    {
+      "id": 3,
+      "email": "user2@company.com",
+      "password": "user123",
+      "role": "user",
+      "name": "User Two",
+      "phone": "(555) 900-0003"
+    },
+    {
+      "id": 4,
+      "email": "new.user@example.com",
+      "phone": "(555) 901-1111",
+      "password": "newpass1",
+      "role": "user",
+      "name": "New User"
     }
   ]
 }

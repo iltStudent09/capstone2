@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 import './Layout.css'
 
 type ThemeMode = 'light' | 'dark'
@@ -24,6 +25,7 @@ function resolveInitialTheme(): ThemeMode {
 
 function Layout() {
   const [theme, setTheme] = useState<ThemeMode>(resolveInitialTheme)
+  const { currentUser, logout } = useAuth()
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -66,6 +68,17 @@ function Layout() {
               }
             >
               {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button>
+
+            {currentUser && (
+              <div className="user-meta">
+                <p>{currentUser.name}</p>
+                <p>{currentUser.role.toUpperCase()}</p>
+              </div>
+            )}
+
+            <button type="button" className="theme-toggle" onClick={logout}>
+              Logout
             </button>
           </div>
         </div>

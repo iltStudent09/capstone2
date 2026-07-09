@@ -7,6 +7,7 @@ type CustomerListProps = {
   customers: Customer[]
   deletingCustomerId?: number | null
   onDeleteCustomer: (customer: Customer) => void
+  canDelete?: boolean
   sortField?: SortableField
   sortDirection?: 'asc' | 'desc'
   onRequestSort?: (field: SortableField) => void
@@ -16,6 +17,7 @@ function CustomerList({
   customers,
   deletingCustomerId = null,
   onDeleteCustomer,
+  canDelete = true,
   sortField,
   sortDirection,
   onRequestSort,
@@ -68,14 +70,16 @@ function CustomerList({
             <td>
               <div className="table-actions">
                 <Link to={`/edit/${customer.id}`}>Edit</Link>
-                <button
-                  type="button"
-                  className="table-delete"
-                  onClick={() => onDeleteCustomer(customer)}
-                  disabled={deletingCustomerId === customer.id}
-                >
-                  {deletingCustomerId === customer.id ? 'Deleting...' : 'Delete'}
-                </button>
+                {canDelete && (
+                  <button
+                    type="button"
+                    className="table-delete"
+                    onClick={() => onDeleteCustomer(customer)}
+                    disabled={deletingCustomerId === customer.id}
+                  >
+                    {deletingCustomerId === customer.id ? 'Deleting...' : 'Delete'}
+                  </button>
+                )}
               </div>
             </td>
           </tr>
