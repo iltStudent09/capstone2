@@ -1,31 +1,17 @@
-# capstone2
+# Customer Manager Capstone
 
 ## Live Demo
 
 - https://iltStudent09.github.io/capstone2/
 
-## GitHub Pages Deployment (gh-pages)
+## Features
 
-Deploy from local using the root script:
-
-```bash
-cd /home/labadmin/Desktop/capstone2
-npm run deploy
-```
-
-This builds `customer-app` and publishes `customer-app/dist` to the `gh-pages` branch.
-
-## Automatic CI
-
-- Workflow: **CI Build and Test**
-- Triggers on:
-	- pushes to `main`
-	- all pull requests
-- Runs:
-	- `npm run test:run`
-	- `npm run build`
-
-Deploy uses the root `gh-pages` script.
+- Full customer CRUD (list, add, edit, delete)
+- Search, filter, sort, and pagination
+- Authentication with email + phone + password
+- First-time account creation from the login card
+- User-scoped data access after sign-in
+- Dark mode toggle
 
 ## Run the Application
 
@@ -36,63 +22,95 @@ Deploy uses the root `gh-pages` script.
 
 ### 1) Install dependencies
 
-Install root dependencies (JSON Server):
+From project root:
 
 ```bash
-cd /home/labadmin/Desktop/capstone2
 npm install
 ```
 
-Install frontend dependencies:
+From frontend folder:
 
 ```bash
-cd /home/labadmin/Desktop/capstone2/customer-app
+cd customer-app
 npm install
 ```
 
-### 2) Start the API (JSON Server)
+### 2) Start the API
 
-From the project root:
+From project root:
 
 ```bash
-cd /home/labadmin/Desktop/capstone2
 npm run api
 ```
 
-API will run at:
+API endpoints:
 
 - http://localhost:3001/customers
+- http://localhost:3001/auth/login
+- http://localhost:3001/auth/register
 
-### 3) Start the React app
+### 3) Start the frontend
 
 In a second terminal:
 
 ```bash
-cd /home/labadmin/Desktop/capstone2/customer-app
+cd customer-app
 npm run dev
 ```
 
-Frontend will run at:
+Frontend:
 
 - http://localhost:5173
 
 ### 4) Optional checks
 
-Build the frontend:
+Build frontend:
 
 ```bash
-cd /home/labadmin/Desktop/capstone2/customer-app
+cd customer-app
 npm run build
 ```
 
-Type check only:
+Type-check only:
 
 ```bash
-cd /home/labadmin/Desktop/capstone2/customer-app
+cd customer-app
 npx tsc --noEmit
 ```
 
-## Architecture Guidance
+## Authentication
 
-- See [ARCHITECTURE.md](ARCHITECTURE.md) for the selected implementation decisions.
-- See [architecture-prompts.md](architecture-prompts.md) for reusable prompts that enforce those decisions.
+- Unauthenticated users are redirected to `/login`.
+- Sign-in requires email, phone number, and password.
+- First-time users can create an account from the same auth card.
+
+### Demo Credentials
+
+- admin@company.com / (555) 900-0001 / admin123
+- user1@company.com / (555) 900-0002 / user123
+- user2@company.com / (555) 900-0003 / user123
+
+## Deployment
+
+Deploy to GitHub Pages with `gh-pages`:
+
+```bash
+npm run deploy
+```
+
+This builds `customer-app` and publishes `customer-app/dist` to the `gh-pages` branch.
+
+## CI
+
+- Workflow: **CI Build and Test**
+- Triggers:
+  - push to `main`
+  - pull requests
+- Steps:
+  - `npm run test:run`
+  - `npm run build`
+
+## Architecture Docs
+
+- [ARCHITECTURE.md](ARCHITECTURE.md)
+- [architecture-prompts.md](architecture-prompts.md)

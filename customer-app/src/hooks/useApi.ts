@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react'
+import { useAuth } from './useAuth'
 
 type ApiRequestInit = Omit<RequestInit, 'body'> & {
   body?: unknown
@@ -13,6 +14,8 @@ function normalizeApiError(error: unknown): string {
 }
 
 export function useApi(baseUrl = '/api') {
+  const { currentUser } = useAuth()
+
   const request = useCallback(
     async <TResponse>(
       path: string,
@@ -25,6 +28,12 @@ export function useApi(baseUrl = '/api') {
           ...rest,
           headers: {
             'Content-Type': 'application/json',
+            ...(currentUser
+              ? {
+                  'x-user-id': String(currentUser.id),
+                  'x-user-role': currentUser.role,
+                }
+              : {}),
             ...(headers ?? {}),
           },
           body: body === undefined ? undefined : JSON.stringify(body),
@@ -43,7 +52,7 @@ export function useApi(baseUrl = '/api') {
         throw new Error(normalizeApiError(error))
       }
     },
-    [baseUrl],
+    [baseUrl, currentUser],
   )
 
   const get = useCallback(

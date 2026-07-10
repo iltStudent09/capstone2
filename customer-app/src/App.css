@@ -201,6 +201,125 @@
   gap: 12px;
 }
 
+.login-page {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 460px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-card h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.login-subtitle {
+  margin: 0;
+  color: var(--text);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-mode-toggle {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mode-button {
+  flex: 1;
+  border: none;
+  background: var(--code-bg);
+  color: var(--text-h);
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.mode-button + .mode-button {
+  border-left: 1px solid var(--border);
+}
+
+.mode-button-active {
+  background: var(--accent-bg);
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.login-demo {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--code-bg);
+}
+
+.login-demo h2 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.login-demo ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+}
+
+.login-error {
+  color: #c62828;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .page {
     padding: 16px;
@@ -221,5 +340,13 @@
 
   .pagination {
     justify-content: flex-start;
+  }
+
+  .login-card {
+    padding: 20px;
+  }
+
+  .login-card h1 {
+    font-size: 26px;
   }
 }
