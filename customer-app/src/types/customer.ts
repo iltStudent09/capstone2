@@ -7,6 +7,8 @@ export interface Customer {
   city: string
   state: string
   zip: string
+  createdByUserId?: number
+  updatedByUserId?: number
 }
 
 export type CustomerFormData = Omit<Customer, 'id'>

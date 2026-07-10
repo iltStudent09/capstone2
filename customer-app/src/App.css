@@ -62,6 +62,12 @@
   background: var(--code-bg);
 }
 
+.account-context {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
 .list-controls {
   display: grid;
   grid-template-columns: 1fr 220px;

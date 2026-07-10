@@ -6,12 +6,18 @@ import CustomerList from '../components/CustomerList'
 import CustomerListPage from '../pages/CustomerListPage'
 import type { Customer } from '../types/customer'
 import { useCustomers } from '../hooks/useCustomers'
+import { useAuth } from '../hooks/useAuth'
 
 vi.mock('../hooks/useCustomers', () => ({
   useCustomers: vi.fn(),
 }))
 
+vi.mock('../hooks/useAuth', () => ({
+  useAuth: vi.fn(),
+}))
+
 const mockedUseCustomers = vi.mocked(useCustomers)
+const mockedUseAuth = vi.mocked(useAuth)
 
 const customers: Customer[] = [
   {
@@ -72,6 +78,20 @@ describe('CustomerList', () => {
 describe('CustomerListPage', () => {
   it('persists selected sort across remounts', async () => {
     const user = userEvent.setup()
+
+    mockedUseAuth.mockReturnValue({
+      currentUser: {
+        id: 2,
+        name: 'User One',
+        email: 'user1@company.com',
+        phone: '(555) 900-0002',
+        role: 'user',
+      },
+      isAuthenticated: true,
+      login: vi.fn(),
+      register: vi.fn(),
+      logout: vi.fn(),
+    })
 
     mockedUseCustomers.mockReturnValue({
       customers: [
@@ -146,6 +166,20 @@ describe('CustomerListPage', () => {
   })
 
   it('shows empty state when there are no customers', () => {
+    mockedUseAuth.mockReturnValue({
+      currentUser: {
+        id: 2,
+        name: 'User One',
+        email: 'user1@company.com',
+        phone: '(555) 900-0002',
+        role: 'user',
+      },
+      isAuthenticated: true,
+      login: vi.fn(),
+      register: vi.fn(),
+      logout: vi.fn(),
+    })
+
     mockedUseCustomers.mockReturnValue({
       customers: [],
       isLoading: false,

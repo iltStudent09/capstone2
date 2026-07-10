@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CustomerList, { type SortableField } from '../components/CustomerList'
+import { useAuth } from '../hooks/useAuth'
 import { useCustomers } from '../hooks/useCustomers'
 import type { Customer } from '../types/customer'
 
@@ -45,6 +46,7 @@ function readStoredSort(): { field: SortableField; direction: 'asc' | 'desc' } {
 }
 
 function CustomerListPage() {
+  const { currentUser } = useAuth()
   const {
     customers,
     isLoading,
@@ -65,6 +67,9 @@ function CustomerListPage() {
     () => readStoredSort().direction,
   )
   const [currentPage, setCurrentPage] = useState(1)
+  const showOwnerColumn = customers.some(
+    (customer) => typeof customer.createdByUserId === 'number',
+  )
 
   useEffect(() => {
     void fetchCustomers()
@@ -183,6 +188,12 @@ function CustomerListPage() {
         </Link>
       </header>
 
+      {currentUser && (
+        <p className="account-context">
+          Viewing account: {currentUser.name} ({currentUser.email})
+        </p>
+      )}
+
       {!isLoading && !errorMessage && (
         <section className="list-controls" aria-label="Customer list controls">
           <label>
@@ -231,6 +242,8 @@ function CustomerListPage() {
             customers={paginatedCustomers}
             deletingCustomerId={deletingCustomerId}
             onDeleteCustomer={handleDeleteCustomer}
+            showOwner={showOwnerColumn}
+            currentUserId={currentUser?.id}
             sortField={sortField}
             sortDirection={sortDirection}
             onRequestSort={handleRequestSort}
